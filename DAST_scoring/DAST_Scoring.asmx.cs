@@ -23,7 +23,7 @@ namespace DAST_scoring
         {
             return "1.0";
         }
-
+         
 
         [WebMethod]
         public OptionObject2015 RunScript(OptionObject2015 inputObject, String ScriptParameter)
