@@ -1,0 +1,17 @@
+﻿name: Deploy Script
+run-name: ${{github.actor}} is deploying a script!
+on: push
+
+jobs:
+  scriptlink-deploy:
+    name: ScriptLink Deploy
+    runs-on: self-hosted
+    steps:
+      - name: Checkout to local server
+        uses: actions/checkout@v4
+        with:
+            ref: ${{ github.head_ref }}
+      - name: Update nuget packages locally
+        run: nuget restore
+      - name: Compile script locally
+        run: msbuild /p:OutputPath="C:\actions-runner\web-services\${{ github.ref_name }}\${{github.event.repository.name}}"  
